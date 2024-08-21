@@ -3,13 +3,12 @@ const cloudinary = require("cloudinary");
 const connectDatabase = require("./config/database");
 const cors = require('cors')
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // Allow all origins
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  next();
-});
-
+// Enable CORS for all routes and origins
+app.use(cors({
+  origin: '*', // You can replace '*' with your frontend's domain to restrict access
+  methods: "GET, POST, PUT, DELETE, OPTIONS",
+  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept"
+}));
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {
