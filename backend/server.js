@@ -1,6 +1,13 @@
 const app = require("./app");
 const cloudinary = require("cloudinary");
 const connectDatabase = require("./config/database");
+const cors = require('cors')
+
+app.use(cors({
+  origin: 'https://techthrive-frontend.onrender.com', // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  credentials: true, // Allow cookies and authentication headers
+}));
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {
