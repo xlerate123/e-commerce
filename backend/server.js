@@ -6,7 +6,7 @@ const cors = require('cors')
 // Enable CORS for all routes and origins
 app.use((req, res, next) => {
   console.log('CORS headers being applied');
-  res.header("Access-Control-Allow-Origin", "https://66c61bed86a4374a312cecda--calm-halva-33fda2.netlify.app");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
