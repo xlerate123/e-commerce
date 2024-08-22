@@ -1,10 +1,14 @@
+const cors = require('cors');
 const app = require("./app");
 const cloudinary = require("cloudinary");
 const connectDatabase = require("./config/database");
-const cors = require('cors')
 
-// Enable CORS for all routes and origins
-app.use(cors());
+
+app.use(cors({
+  origin: '*', // Allow all origins, for public access
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers
+}));
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {
