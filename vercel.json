@@ -11,7 +11,6 @@
       "use": "@vercel/node"
     }
   ],
-  
   "routes": [
     {
       "src": "/api/(.*)",
@@ -21,6 +20,13 @@
       "src": "/(.*)",
       "dest": "/frontend/$1",
       "status": 200
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/index.html"
     }
   ]
 }
