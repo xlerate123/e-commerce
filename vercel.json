@@ -3,24 +3,15 @@
   "builds": [
     {
       "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
+      "use": "@vercel/static-build"
     },
     {
       "src": "backend/server.js",
       "use": "@vercel/node"
     }
   ],
-  "redirects": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/backend/server.js",
-      "statusCode": 308
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html",
-      "statusCode": 308
-    }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/backend/server.js" },
+    { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
